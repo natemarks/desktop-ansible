@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    desktop_user: nate
+    golang_version: 1.15.8
+  roles:
+    - golang
