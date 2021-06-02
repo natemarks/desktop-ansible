@@ -6,6 +6,14 @@
 
 - debug: var=username_on_the_host
 
+- name: Create HOME/bashrc.d
+  become: no
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bashrc.d"
+    state: directory
+    owner: "{{ username_on_the_host.stdout }}"
+    group: "{{ username_on_the_host.stdout }}"
+    mode: '0755'
 
 - name: Create system /etc/bashrc.d
   become: yes

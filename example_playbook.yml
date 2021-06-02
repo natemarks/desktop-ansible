@@ -1,13 +1,14 @@
 
 ---
 - name: Install Go and Hugo
-  become: true
+  become: false
   hosts: localhost
+  gather_facts: yes
   connection: local
   vars:
     desktop_user: nate
     golang_version: 1.15.8
   roles:
-    - darkwizard242.hugo
-    - golang
+#    - darkwizard242.hugo
+#    - golang
     - shell
