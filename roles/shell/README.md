@@ -19,8 +19,8 @@ if [ -d $HOME/bashrc.d ]; then
   done
   unset i
 fi
-   
-   ```
+export PATH="$HOME/.local/bin:{PATH}" >> $HOME/.bashrc   
+```
 ### append bashrc.local source to $HOME/.bashrc
 ```shell
 # $HOME/.bashrc
