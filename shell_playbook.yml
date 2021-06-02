@@ -1,8 +1,9 @@
 
 ---
 - name: Install Go and Hugo
-  become: true
+  become: no
   hosts: localhost
+  gather_facts: yes
   connection: local
   vars:
     desktop_user: nate
