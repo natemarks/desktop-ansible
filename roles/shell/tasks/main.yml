@@ -7,7 +7,7 @@
 - debug: var=username_on_the_host
 
 
-- name: Create /etc/bashrc.d
+- name: Create system /etc/bashrc.d
   become: yes
   ansible.builtin.file:
     path: /etc/bashrc.d
@@ -33,3 +33,13 @@
     owner: root
     group: root
     mode: '0644'
+
+
+- name: Create home bashrc.d
+  become: no
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/bashrc.d"
+    state: directory
+    owner: "{{ username_on_the_host }}"
+    group: "{{ username_on_the_host }}"
+    mode: '0755'
