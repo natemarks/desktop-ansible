@@ -2,17 +2,17 @@
 - name: get the username running the deploy
   become: false
   local_action: command whoami
-  register: username_on_the_host
+  register: desktop_user
 
-- debug: var=username_on_the_host
+- debug: var=desktop_user
 
 - name: Create HOME/bashrc.d
   become: no
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/bashrc.d"
     state: directory
-    owner: "{{ username_on_the_host.stdout }}"
-    group: "{{ username_on_the_host.stdout }}"
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
     mode: '0755'
 
 - name: Create system /etc/bashrc.d
