@@ -1,0 +1,35 @@
+---
+- name: get the username running the deploy
+  become: false
+  local_action: command whoami
+  register: username_on_the_host
+
+- debug: var=username_on_the_host
+
+
+- name: Create /etc/bashrc.d
+  become: yes
+  ansible.builtin.file:
+    path: /etc/bashrc.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Create pyenv system plugin
+  become: yes
+  template:
+    src: templates/pyenv-pipenv.sh
+    dest: /etc/bashrc.d/pyenv-pipenv.sh
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create go system plugin
+  become: yes
+  template:
+    src: templates/golang.sh
+    dest: /etc/bashrc.d/golang.sh
+    owner: root
+    group: root
+    mode: '0644'
