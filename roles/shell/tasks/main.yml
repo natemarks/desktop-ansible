@@ -74,7 +74,7 @@
 
 - name: Update bashrc to call bashrc.local
   become: no
-    lineinfile:
-      dest: "{{ ansible_env.HOME }}/.bashrc"
-      line: ". source $HOME/.bashrc.local"
-      owner: foo
+  lineinfile:
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    line: ". source $HOME/.bashrc.local"
+    owner: foo
