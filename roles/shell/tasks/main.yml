@@ -81,7 +81,7 @@
     group: "{{ desktop_user.stdout }}"
 
 
-- name: Clone a repo with separate git directory
+- name: Clone pyenv to HOME/.pyenv
   become: no
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
