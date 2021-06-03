@@ -6,7 +6,7 @@
 # the following to ~/.profile:
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:${PATH}"
 
 # Load pyenv automatically by appending
 # the following to ~/.bashrc:
