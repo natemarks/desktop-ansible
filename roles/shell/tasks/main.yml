@@ -77,4 +77,5 @@
   lineinfile:
     dest: "{{ ansible_env.HOME }}/.bashrc"
     line: ". source $HOME/.bashrc.local"
-    owner: foo
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
