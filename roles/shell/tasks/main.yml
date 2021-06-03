@@ -54,7 +54,7 @@
 
 
 - name: Link /etc/bashrc.d/golang.sh to HOME/bashrc.d/golang.sh
-  become: no
+  become: yes
   ansible.builtin.file:
     src: "/etc/bashrc.d/golang.sh"
     dest: "{{ ansible_env.HOME }}/bashrc.d/golang.sh"
@@ -64,7 +64,7 @@
 
 
 - name: Link /etc/bashrc.d/pyenv-pipenv.sh to HOME/bashrc.d/pyenv-pipenv.sh
-  become: no
+  become: yes
   ansible.builtin.file:
     src: "/etc/bashrc.d/pyenv-pipenv.sh"
     dest: "{{ ansible_env.HOME }}/bashrc.d/pyenv-pipenv.sh"
