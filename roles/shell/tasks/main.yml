@@ -41,3 +41,13 @@
     owner: root
     group: root
     mode: '0644'
+
+
+- name: Create HOME/.bashrc.local
+  become: no
+  ansible.builtin.template:
+    src: templates/bashrc.local
+    dest: "{{ ansible_env.HOME }}/.bashrc.local"
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
+    mode: '0644'
