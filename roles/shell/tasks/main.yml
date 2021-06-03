@@ -76,5 +76,5 @@
   become: no
     lineinfile:
       dest: "{{ ansible_env.HOME }}/.bashrc"
-      line: "[[ -s ${pythonbrew.bashrc_path} ]] && source {pythonbrew.bashrc_path}"
+      line: ". source $HOME/.bashrc.local"
       owner: foo
