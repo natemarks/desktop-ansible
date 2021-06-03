@@ -79,3 +79,10 @@
     line: ". source $HOME/.bashrc.local"
     owner: "{{ desktop_user.stdout }}"
     group: "{{ desktop_user.stdout }}"
+
+
+- name: Clone a repo with separate git directory
+  become: no
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "{{ ansible_env.HOME }}/.pyenv"
