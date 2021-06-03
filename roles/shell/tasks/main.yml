@@ -51,3 +51,23 @@
     owner: "{{ desktop_user.stdout }}"
     group: "{{ desktop_user.stdout }}"
     mode: '0644'
+
+
+- name: Link /etc/bashrc.d/golang.sh to HOME/bashrc.d/golang.sh
+  become: no
+  ansible.builtin.file:
+    src: "/etc/bashrc.d/golang.sh"
+    dest: "{{ ansible_env.HOME }}/bashrc.d/golang.sh"
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
+    state: link
+
+
+- name: Link /etc/bashrc.d/pyenv-pipenv.sh to HOME/bashrc.d/pyenv-pipenv.sh
+  become: no
+  ansible.builtin.file:
+    src: "/etc/bashrc.d/pyenv-pipenv.sh"
+    dest: "{{ ansible_env.HOME }}/bashrc.d/pyenv-pipenv.sh"
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
+    state: link
