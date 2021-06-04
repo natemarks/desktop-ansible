@@ -60,6 +60,17 @@
     mode: '0644'
 
 
+
+- name: Deploy HOME/bashrc.d/aliases.sh
+  become: yes
+  ansible.builtin.template:
+    src: templates/aliases.sh
+    dest: "{{ ansible_env.HOME }}/aliases.sh"
+    owner: "{{ desktop_user.stdout }}"
+    group: "{{ desktop_user.stdout }}"
+    mode: '0644'
+
+
 - name: Link /etc/bashrc.d/golang.sh to HOME/bashrc.d/golang.sh
   become: yes
   ansible.builtin.file:
