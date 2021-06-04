@@ -65,7 +65,7 @@
   become: yes
   ansible.builtin.template:
     src: templates/aliases.sh
-    dest: "{{ ansible_env.HOME }}/aliases.sh"
+    dest: "{{ ansible_env.HOME }}/bashrc.d/aliases.sh"
     owner: "{{ desktop_user.stdout }}"
     group: "{{ desktop_user.stdout }}"
     mode: '0644'
