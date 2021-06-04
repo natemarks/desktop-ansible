@@ -94,7 +94,7 @@
   become: yes
   lineinfile:
     dest: "{{ ansible_env.HOME }}/.bashrc"
-    line: ". source $HOME/.bashrc.local"
+    line: ". $HOME/.bashrc.local"
     owner: "{{ desktop_user.stdout }}"
     group: "{{ desktop_user.stdout }}"
 
