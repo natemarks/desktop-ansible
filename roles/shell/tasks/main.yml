@@ -6,24 +6,6 @@
 
 - debug: var=desktop_user
 
-- name: Install packages required by pyenv to install python
-  become: yes
-  apt:
-    pkg:
-      - make
-      - build-essential
-      - libssl-dev
-      - zlib1g-dev
-      - libbz2-dev
-      - libreadline-dev
-      - libsqlite3-dev
-      - wget
-      - curl
-      - llvm
-      - libncurses5-dev
-      - xz-utils
-      - tk-dev
-
 # This keep changing the clone directory to root ownership
 #- name: Clone pyenv to HOME/.pyenv
 #  become: no
@@ -105,3 +87,21 @@
     owner: "{{ desktop_user.stdout }}"
     group: "{{ desktop_user.stdout }}"
 
+
+- name: Install packages required by pyenv to install python
+  become: yes
+  apt:
+    pkg:
+      - make
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+      - libncurses5-dev
+      - xz-utils
+      - tk-dev
