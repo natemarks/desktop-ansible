@@ -14,7 +14,7 @@
 #    dest: "{{ ansible_env.HOME }}/.pyenv"
 
 - name: Create HOME/bashrc.d
-  become: no
+  become: yes
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/bashrc.d"
     state: directory
