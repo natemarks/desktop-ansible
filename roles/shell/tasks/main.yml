@@ -6,7 +6,6 @@
 
 - debug: var=desktop_user
 
-
 - name: Install packages required by pyenv to install python
   become: yes
   apt:
@@ -24,22 +23,13 @@
       - libncurses5-dev
       - xz-utils
       - tk-dev
-      -
+
 # This keep changing the clone directory to root ownership
 #- name: Clone pyenv to HOME/.pyenv
 #  become: no
 #  ansible.builtin.git:
 #    repo: https://github.com/pyenv/pyenv.git
 #    dest: "{{ ansible_env.HOME }}/.pyenv"
-
-- name: Change ownership of HOME/.pyenv
-  become: no
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.pyenv"
-    state: directory
-    recurse: yes
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
 
 - name: Create HOME/bashrc.d
   become: no
