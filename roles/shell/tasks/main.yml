@@ -51,7 +51,7 @@
 
 
 - name: Create HOME/.bashrc.local
-  become: no
+  become: yes
   ansible.builtin.template:
     src: templates/bashrc.local
     dest: "{{ ansible_env.HOME }}/.bashrc.local"
@@ -80,7 +80,7 @@
     state: link
 
 - name: Update bashrc to call bashrc.local
-  become: no
+  become: yes
   lineinfile:
     dest: "{{ ansible_env.HOME }}/.bashrc"
     line: ". source $HOME/.bashrc.local"
