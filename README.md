@@ -34,7 +34,7 @@ sudo apt purge python2.7-minimal
 sudo apt install python3 python3-pip
 sudo pip3 install --upgrade pip setuptools
 sudo pip3 install ansible
-export PATH="$HOME/.local/bin:{PATH}"
+export PATH="$HOME/.local/bin:${PATH}"
 
 ```
 
