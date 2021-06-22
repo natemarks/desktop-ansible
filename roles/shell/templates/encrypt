@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo -n 'GPG Passphrase'
+read -s PASSPHRASE
+
+#  if this command hangs, kill the gpg agent:
+# gpgconf --kill gpg-agent
+
+gpg -a -c --batch --yes --passphrase "${PASSPHRASE}"  -o $1.gpg  $1
