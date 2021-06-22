@@ -1,0 +1,12 @@
+---
+
+- name: Install common desktop packages
+  become: yes
+  apt:
+    pkg:
+      - git
+      - curl
+#      - lsd
+#      - bat
+#      - duf
+#      - dust
