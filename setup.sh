@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# group the account with
+# sudo useradd-m -d /home/myname myname
+# sudo usermod -a -G adm,cdrom,sudo,dlp,plugdev,lpadmin,lxd,sambashare myname
+# sudpo passwd myname
+
+
+#  cleamup
+# userdel -r myname
+
 # required to get the desktop-ansible projecy
 sudo apt install -y \
 git
