@@ -40,7 +40,9 @@ export PATH="$HOME/.local/bin:${PATH}"
 
 **Setup the project python environment**
 
-
+```bash
+bash <(curl -s https://raw.githubusercontent.com/natemarks/desktop-ansible/main/setup.sh)
+```
 Requirements: Setup python3 as your interpreter. We test on 3.9.2
 
 run make roles, to create the virtual environment in the project directory and download and install galaxy roles
