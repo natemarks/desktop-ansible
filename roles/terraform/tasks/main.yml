@@ -1,0 +1,51 @@
+---
+- name: Gather ec2 metadata facts
+  amazon.aws.ec2_metadata_facts:
+
+- name: Set tarball file name
+  set_fact:
+    versions:
+      0.13.7: 4a52886e019b4fdad2439da5ff43388bbcc6cce9784fde32c53dcd0e28ca9957
+      0.14.11: 171ef5a4691b6f86eab524feaf9a52d5221c875478bd63dd7e55fef3939f7fd4
+    zzzzloops:
+      - version: "0.13.7"
+        sum: "4a52886e019b4fdad2439da5ff43388bbcc6cce9784fde32c53dcd0e28ca9957"
+        priority: "20"
+      - version: "0.14.11"
+        sum: "171ef5a4691b6f86eab524feaf9a52d5221c875478bd63dd7e55fef3939f7fd4"
+        priority: "10"
+
+- name: Create terraform installation directories
+  become: true
+  file:
+    path: "/opt/terraform/{{ item.key }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ versions | dict2items }}"
+
+
+- name: Download file with check (sha256)
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ item.key }}/terraform_{{ item.key }}_linux_amd64.zip"
+    dest: "/opt/terraform/{{ item.key }}"
+    checksum: "{{ item.value }}"
+    mode: '0755'
+  loop: "{{ versions | dict2items }}"
+
+
+- name: Extract terraform
+  ansible.builtin.unarchive:
+    src: "/opt/terraform/{{ item.key }}/terraform_{{ item.key }}_linux_amd64.zip"
+    dest: "/opt/terraform/{{ item.key }}"
+  loop: "{{ versions | dict2items }}"
+
+
+# The last entry seems to be the default
+#- name: update alternatives for terraform
+#  become: true
+#  alternatives:
+#    name: terraform
+#    path: "/opt/terraform/{{ item.key }}/terraform"
+#    link: /usr/local/bin/terraform
+#    priority: "{{ item.priority }}"
+#  loop: "{{ versions | dict2items }}"

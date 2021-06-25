@@ -1,0 +1,5 @@
+---
+aware_version: "2.10r154568"
+splunk_forwarder_rpm: "splunkforwarder-8.1.2-545206cc9f70-linux-2.6-x86_64.rpm"
+splunk_forwarder_home: "/opt/splunkforwarder"
+splunk_creds: "imprivatahipaa-forwarder-credentials.tar.gz"
