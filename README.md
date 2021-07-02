@@ -1,8 +1,5 @@
 # desktop-ansible
-Use this project to set up ansible on your desktop to use our curated list of ansible roles to add tool/configurations to your (ubuntu 18..04 and newer) linux desktop. This version is important because 18.04 does not have system tools that require python2.
-
-
-After completing the project setup, you'll be able to use the example_playbook.yml to install a couple tools using the roles. You can also use that example to create and run your own playbooks
+This project provides ansible roles to manage the configuration of a  curated list of ansible roles to add tool/configurations to your (ubuntu 18.04/20.04) linux desktop.
 
 Roles can be installed by:
  - committing them in this project in the roles/ directory
@@ -18,6 +15,9 @@ git clone https://github.com/natemarks/desktop-ansible.git
 cd desktop-ansible
 ```
 
+**Downlaod the anyconnect pre-install tarball for linux64**
+
+
 ** Make sure you're running Ubuntu 18.04 or newer and remvoe python2 **
 ```shell
 lsb_release -a
@@ -25,16 +25,6 @@ No LSB modules are available.
 Distributor ID:	Ubuntu
 Description:	Ubuntu 20.04.2 LTS
 Release:	20.04
-
-```
-
-
-```shell
-sudo apt purge python2.7-minimal
-sudo apt install python3 python3-pip
-sudo pip3 install --upgrade pip setuptools
-sudo pip3 install ansible
-export PATH="$HOME/.local/bin:${PATH}"
 
 ```
 

@@ -10,3 +10,10 @@
 #      - bat
 #      - duf
 #      - dust
+
+- name: Remove python2 (minimal)
+  become: yes
+  apt:
+    pkg: python2.7-minimal
+    state: absent
+
