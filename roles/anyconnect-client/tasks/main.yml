@@ -1,0 +1,5 @@
+---
+- name: Extract AnyConnect tarball to /opt/anycnnect
+  ansible.builtin.unarchive:
+    src: "{{ lookup('env','HOME') }}/anyconnect-linux64-4.9.06037-predeploy-k9.tar.gz"
+    dest: /opt/anyconnect

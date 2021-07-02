@@ -1,0 +1,11 @@
+
+---
+- name: Install Anyconnect
+  become: yes
+  hosts: localhost
+  gather_facts: yes
+  connection: local
+  roles:
+#    - darkwizard242.hugo
+#    - golang
+    - anyconnect-client
