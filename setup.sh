@@ -43,7 +43,8 @@ libncurses5-dev \
 xz-utils \
 tk-dev
 
-
+cd "$HOME/desktop-ansible"
+ansible-playbook anyconnect_playbook.yml
 #
 #git clone https://github.com/pyenv/pyenv.git "${HOME}/.pyenv"
 #

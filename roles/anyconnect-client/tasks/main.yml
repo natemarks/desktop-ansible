@@ -10,3 +10,17 @@
   ansible.builtin.unarchive:
     src: "{{ lookup('env','HOME') }}/Downloads/anyconnect-linux64-4.9.06037-predeploy-k9.tar.gz"
     dest: /opt/anyconnect
+
+- name: Deploy AnyConnectProfile.xsd
+  become: yes
+  ansible.builtin.template:
+    src: templates/AnyConnectProfile.xsd
+    dest: "/opt/anyconnect/anyconnect-linux64-4.9.06037/vpn/AnyConnectProfile.xsd"
+    mode: '0664'
+
+- name: Deploy anyconnect profile Eng_Full_Tunnel_Profile.xml
+  become: yes
+  ansible.builtin.template:
+    src: templates/Eng_Full_Tunnel_Profile.xml
+    dest: "/opt/anyconnect/anyconnect-linux64-4.9.06037/vpn/Eng_Full_Tunnel_Profile.xml"
+    mode: '0664'
