@@ -1,5 +1,12 @@
 ---
-- name: Extract AnyConnect tarball to /opt/anycnnect
+- name: Create /opt/anyconnect
+  become: yes
+  ansible.builtin.file:
+    path: "/opt/anyconnect"
+    state: directory
+    mode: '0755'
+
+- name: Extract AnyConnect tarball to anyconnect
   ansible.builtin.unarchive:
     src: "{{ lookup('env','HOME') }}/Downloads/anyconnect-linux64-4.9.06037-predeploy-k9.tar.gz"
     dest: /opt/anyconnect
