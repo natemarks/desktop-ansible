@@ -20,7 +20,7 @@ sudo apt install -y git
 git clone https://github.com/natemarks/desktop-ansible.git "${HOME}/desktop-ansible"
 
 # install python3 and ansible
-sudo apt install -y python3
+sudo apt install -y python3 python3-pip
 sudo pip3 install ansible
 # export PATH="$HOME/.local/bin:${PATH}"
 
