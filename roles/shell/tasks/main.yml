@@ -11,12 +11,12 @@
   become: no
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
-    dest: "{{ ansible_env.HOME }}/.pyenv"
+    dest: "{{ desktop_user_homedir.stdout }}/.pyenv"
 
 - name: Create HOME/bashrc.d
   become: yes
   ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/bashrc.d"
+    path: "{{ desktop_user_homedir.stdout }}/bashrc.d"
     state: directory
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
@@ -55,7 +55,7 @@
   become: yes
   ansible.builtin.template:
     src: templates/bashrc.local
-    dest: "{{ ansible_env.HOME }}/.bashrc.local"
+    dest: "{{ desktop_user_homedir.stdout }}/.bashrc.local"
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
     mode: '0644'
@@ -67,7 +67,7 @@
   become: yes
   ansible.builtin.template:
     src: templates/aliases.sh
-    dest: "{{ ansible_env.HOME }}/bashrc.d/aliases.sh"
+    dest: "{{ desktop_user_homedir.stdout }}/bashrc.d/aliases.sh"
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
     mode: '0644'
@@ -78,7 +78,7 @@
   become: yes
   ansible.builtin.file:
     src: "/etc/bashrc.d/golang.sh"
-    dest: "{{ ansible_env.HOME }}/bashrc.d/golang.sh"
+    dest: "{{ desktop_user_homedir.stdout }}/bashrc.d/golang.sh"
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
     state: link
@@ -88,7 +88,7 @@
   become: yes
   ansible.builtin.file:
     src: "/etc/bashrc.d/pyenv-pipenv.sh"
-    dest: "{{ ansible_env.HOME }}/bashrc.d/pyenv-pipenv.sh"
+    dest: "{{ desktop_user_homedir.stdout }}/bashrc.d/pyenv-pipenv.sh"
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
     state: link
@@ -96,7 +96,7 @@
 - name: Update bashrc to call bashrc.local
   become: yes
   lineinfile:
-    dest: "{{ ansible_env.HOME }}/.bashrc"
+    dest: "{{ desktop_user_homedir.stdout }}/.bashrc"
     line: ". $HOME/.bashrc.local"
     owner: "{{ desktop_user }}"
     group: "{{ desktop_user }}"
