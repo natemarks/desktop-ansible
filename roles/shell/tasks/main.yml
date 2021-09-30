@@ -1,5 +1,10 @@
 ---
-- debug: var=desktop_user
+- name: get the home directory of the given user
+  become: false
+  local_action: command eval echo ~{{ desktop_user }}
+  register: desktop_user_homedir
+
+- debug: var=desktop_user_homedir
 
 # This keep changing the clone directory to root ownership
 - name: Clone pyenv to HOME/.pyenv
