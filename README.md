@@ -5,8 +5,18 @@ Roles can be installed by:
  - committing them in this project in the roles/ directory
  - using an ansible-galaxy requirements file (ex. ansible_requirements.yml)
 
+## Prerequisites
+This assumes your logged into your account wiht a user naem created something like this:
+```shell
+# 
+sudo useradd "spiderman" -s /bin/bash -m -d "/home/spiderman"
+sudo usermod -aG sudo "spiderman"
+sudo passwd spiderman
+```
+
 
 ## Getting Started
+
 
 **Clone this project**
 The cd to the project root

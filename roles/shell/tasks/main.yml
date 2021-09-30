@@ -1,9 +1,4 @@
 ---
-- name: get the username running the deploy
-  become: false
-  local_action: command whoami
-  register: desktop_user
-
 - debug: var=desktop_user
 
 # This keep changing the clone directory to root ownership
@@ -18,8 +13,8 @@
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/bashrc.d"
     state: directory
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
     mode: '0755'
 
 - name: Create system /etc/bashrc.d
@@ -56,8 +51,8 @@
   ansible.builtin.template:
     src: templates/bashrc.local
     dest: "{{ ansible_env.HOME }}/.bashrc.local"
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
     mode: '0644'
     backup: yes
 
@@ -68,8 +63,8 @@
   ansible.builtin.template:
     src: templates/aliases.sh
     dest: "{{ ansible_env.HOME }}/bashrc.d/aliases.sh"
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
     mode: '0644'
     backup: yes
 
@@ -79,8 +74,8 @@
   ansible.builtin.file:
     src: "/etc/bashrc.d/golang.sh"
     dest: "{{ ansible_env.HOME }}/bashrc.d/golang.sh"
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
     state: link
 
 
@@ -89,8 +84,8 @@
   ansible.builtin.file:
     src: "/etc/bashrc.d/pyenv-pipenv.sh"
     dest: "{{ ansible_env.HOME }}/bashrc.d/pyenv-pipenv.sh"
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
     state: link
 
 - name: Update bashrc to call bashrc.local
@@ -98,8 +93,8 @@
   lineinfile:
     dest: "{{ ansible_env.HOME }}/.bashrc"
     line: ". $HOME/.bashrc.local"
-    owner: "{{ desktop_user.stdout }}"
-    group: "{{ desktop_user.stdout }}"
+    owner: "{{ desktop_user }}"
+    group: "{{ desktop_user }}"
 
 
 - name: Install packages required by pyenv to install python
