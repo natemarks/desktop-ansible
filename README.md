@@ -31,7 +31,7 @@ Release:	20.04
 **Setup the project python environment**
 
 ```bash
-curl -s https://raw.githubusercontent.com/natemarks/desktop-ansible/main/setup.sh | bash
+curl -s https://raw.githubusercontent.com/natemarks/desktop-ansible/main/scripts/setup.sh | bash
 ```
 Requirements: Setup python3 as your interpreter. We test on 3.9.2
 

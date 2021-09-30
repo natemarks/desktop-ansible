@@ -11,10 +11,7 @@ fi
 set -o pipefail
 set -e
 
-# detect if this file is being sourced or not
-(return 0 2>/dev/null) && sourced=true || sourced=false
-
-declare -r anyconect_installer="${HOME}/anyconnect-linux64-4.9.06037-predeploy-k9.tar.gz"
+# declare -r anyconnect_installer="${HOME}/anyconnect-linux64-4.9.06037-predeploy-k9.tar.gz"
 
 
 

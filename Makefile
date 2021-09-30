@@ -53,4 +53,9 @@ else
 endif
 
 
+shellcheck: ## Run static code checks
+	@echo Run shellcheck against scripts/
+	shellcheck scripts/*.sh
+
+
 .PHONY: run build release static upload vet lint
