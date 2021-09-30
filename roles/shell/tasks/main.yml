@@ -8,7 +8,8 @@
 
 # This keep changing the clone directory to root ownership
 - name: Clone pyenv to HOME/.pyenv
-  become: no
+  become:yes
+  become_user: {{ desktop_user }}
   ansible.builtin.git:
     repo: https://github.com/pyenv/pyenv.git
     dest: "{{ desktop_user_homedir.stdout }}/.pyenv"
