@@ -5,8 +5,11 @@
   hosts: localhost
   gather_facts: yes
   connection: local
+  vars_prompt:
+    name: desktop_user
+    prompt: 'what is the user account to configure'
+    private: no
   vars:
-    desktop_user: nate
     golang_version: 1.15.8
   roles:
 #    - darkwizard242.hugo
