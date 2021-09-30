@@ -23,8 +23,18 @@ The cd to the project root
 ```shell
 git clone https://github.com/natemarks/desktop-ansible.git
 cd desktop-ansible
-```
 
+sudo ansible-playbook ~/desktop-ansible/shell_playbook.yml 
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+what is the user account to configure: spiderman
+
+```
+Alternatively provide the  usernaem like this:
+```shell
+sudo ansible-playbook ~/desktop-ansible/shell_playbook.yml --extra-vars "desktop_user=spiderman"
+
+```
 **Downlaod the anyconnect pre-install tarball for linux64**
 
 
