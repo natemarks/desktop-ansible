@@ -1,7 +1,7 @@
 ---
 - name: get the home directory of the given user
   become: false
-  local_action: command eval echo ~{{ desktop_user }}
+  local_action: command echo ~{{ desktop_user }}
   register: desktop_user_homedir
 
 - debug: var=desktop_user_homedir
